@@ -229,4 +229,29 @@ function executeUnitTests()
 {
     require 'unittests.php';
 }
+
+function teamDetail($teamid){
+    if(!isset($teamid)){
+        echo "non";
+    }
+    if ($teamid == null) {
+        $message = "Team ID is missing.";
+        require_once 'view/error.php';
+    } else {
+        // Get the team details
+        $team = VolscoreDB::getTeam($teamid);
+        $games = VolscoreDB::getGames();
+
+        if ($team == null) {
+            $message = "Team not found.";
+            require_once 'view/error.php';
+        } else {
+            // Get the list of players for the team
+            $players = VolscoreDB::getMembers($teamid);
+
+            // Pass the team and players data to the view
+            require_once 'view/teamDetail.php';
+        }
+    }
+}
 ?>
