@@ -17,10 +17,19 @@ ob_start();
             <?php endforeach; ?>
         </div>
         <div class="row actions d-flex flex-column">
+
+            <!-- BTN Point -> Ajoute un point-->
             <form method="post" action="?action=scorePoint">
                 <input type="hidden" name="setid" value="<?= $set->id ?>" />
                 <input type="hidden" name="receiving" value="1" />
                 <input class="col-12 btn btn-success" type="submit" value="Point" />
+            </form>
+
+            <!-- Formulaire pour annuler le dernier point -->
+            <form method="post" action="?action=undoLastPoint">
+                <input type="hidden" name="setid" value="<?= $set->id ?>" />
+                <input type="hidden" name="receiving" value="1" />
+                <input class="col-12 btn btn-warning" type="submit" value="Annuler le dernier point" />
             </form>
             <div class="d-flex flex-row justify-content-between">
                 <a class="btn btn-danger m-2" href="?action=selectBooking&teamid=<?= $game->receivingTeamId ?>&setid=<?= $set->id ?>">
@@ -45,10 +54,19 @@ ob_start();
             <?php endforeach; ?>
         </div>
         <div class="row actions d-flex flex-column">
+
+            <!-- BTN Point -> Ajoute un point-->
             <form method="post" action="?action=scorePoint">
                 <input type="hidden" name="setid" value="<?= $set->id ?>" />
                 <input type="hidden" name="receiving" value="0" />
                 <input class="col-12 btn btn-success" type="submit" value="Point" />
+            </form>
+
+            <!-- Formulaire pour annuler le dernier point -->
+            <form method="post" action="?action=undoLastPoint">
+                <input type="hidden" name="setid" value="<?= $set->id ?>" />
+                <input type="hidden" name="receiving" value="1" />
+                <input class="col-12 btn btn-warning" type="submit" value="Annuler le dernier point" />
             </form>
             <div class="d-flex flex-row justify-content-between">
                 <a class="btn btn-danger m-2" href="?action=selectBooking&teamid=<?= $game->visitingTeamId ?>&setid=<?= $set->id ?>">
