@@ -6,6 +6,21 @@ require_once 'controller/controller.php';
 require_once 'model/VolscoreDB.php';
 require_once 'vendor/autoload.php';
 require_once 'helpers/helpers.php';
+session_start();
+if ($_POST["language"]){
+
+    switch ($_POST["language"]){
+        case 'en':
+            $_SESSION["languagePreference"] = "en";
+            break;
+        case 'fr':
+            $_SESSION["languagePreference"] = "fr";
+            break;
+        case 'de':
+            $_SESSION["languagePreference"] = "de";
+            break;
+    }
+}
 
 switch ($action)
 {
