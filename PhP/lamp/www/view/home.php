@@ -11,7 +11,7 @@ switch ($_SESSION["languagePreference"]){
         break;   
 }
 
-$title = 'Accueil';
+$title = $pageTitle;
 ob_start();
 ?>
 <div class="row">
