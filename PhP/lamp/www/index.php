@@ -60,6 +60,9 @@ switch ($action)
     case 'teamDetail':
         teamDetail($_GET['teamid']);
         break;
+    case 'removePoint':
+        removePoint($_POST['setid']);
+        break;
     default:
         require_once 'view/home.php';
 }

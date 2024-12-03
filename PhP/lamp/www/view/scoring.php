@@ -26,7 +26,7 @@ ob_start();
             </form>
 
             <!-- Formulaire pour annuler le dernier point -->
-            <form method="post" action="?action=undoLastPoint">
+            <form method="post" action="?action=removePoint">
                 <input type="hidden" name="setid" value="<?= $set->id ?>" />
                 <input type="hidden" name="receiving" value="1" />
                 <input class="col-12 btn btn-warning" type="submit" value="Annuler le dernier point" />
@@ -63,9 +63,9 @@ ob_start();
             </form>
 
             <!-- Formulaire pour annuler le dernier point -->
-            <form method="post" action="?action=undoLastPoint">
+            <form method="post" action="?action=removePoint">
                 <input type="hidden" name="setid" value="<?= $set->id ?>" />
-                <input type="hidden" name="receiving" value="1" />
+                <input type="hidden" name="receiving" value="0" />
                 <input class="col-12 btn btn-warning" type="submit" value="Annuler le dernier point" />
             </form>
             <div class="d-flex flex-row justify-content-between">
