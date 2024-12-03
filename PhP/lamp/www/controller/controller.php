@@ -217,6 +217,15 @@ function scorePoint($setid,$receiving)
     }
 }
 
+function removePoint($setid)
+{
+    $set = VolscoreDb::getSet($setid);
+    VolscoreDB::removeLastPoint($set);
+    
+    // Rediriger l'utilisateur vers la page de gestion du score
+    header('Location: ?action=keepScore&setid='.$setid);
+}
+
 function validateTeamForGame($teamid,$gameid)
 {
     foreach(VolscoreDB::getRoster($gameid,$teamid) as $member) {
