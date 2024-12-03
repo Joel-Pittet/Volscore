@@ -25,12 +25,6 @@ ob_start();
                 <input class="col-12 btn btn-success" type="submit" value="Point" />
             </form>
 
-            <!-- Formulaire pour annuler le dernier point -->
-            <form method="post" action="?action=removePoint">
-                <input type="hidden" name="setid" value="<?= $set->id ?>" />
-                <input type="hidden" name="receiving" value="1" />
-                <input class="col-12 btn btn-warning" type="submit" value="Annuler le dernier point" />
-            </form>
             <div class="d-flex flex-row justify-content-between">
                 <a class="btn btn-danger m-2" href="?action=selectBooking&teamid=<?= $game->receivingTeamId ?>&setid=<?= $set->id ?>">
                     Sanctions
@@ -43,6 +37,21 @@ ob_start();
             </div>
         </div>
     </div>
+
+    <!-- Annuler le dernier point-->
+    <div id="removePoint" class="d-flex flex-column order-<?= (($game->toss+$set->number) % 2 == 0) ? 1 : 2 ?>">
+        <div class="row actions d-flex flex-column">
+
+            <!-- Formulaire pour annuler le dernier point -->
+            <form method="post" action="?action=removePoint">
+                <input type="hidden" name="setid" value="<?= $set->id ?>" />
+                <input type="hidden" name="receiving" value="1" />
+                <input id="btnRemovePoint" class="col-13 btn btn-warning" type="submit" value="Annuler le dernier point" />
+            </form>
+
+        </div>
+    </div>
+
     <div class="d-flex flex-column order-<?= (($game->toss+$set->number) % 2 == 0) ? 2 : 1 ?>">
         <div class="teamname"><?= $game->visitingTeamName ?></div>
         <div class="setscore"><?= $game->scoreVisiting ?></div>
@@ -60,13 +69,6 @@ ob_start();
                 <input type="hidden" name="setid" value="<?= $set->id ?>" />
                 <input type="hidden" name="receiving" value="0" />
                 <input class="col-12 btn btn-success" type="submit" value="Point" />
-            </form>
-
-            <!-- Formulaire pour annuler le dernier point -->
-            <form method="post" action="?action=removePoint">
-                <input type="hidden" name="setid" value="<?= $set->id ?>" />
-                <input type="hidden" name="receiving" value="0" />
-                <input class="col-12 btn btn-warning" type="submit" value="Annuler le dernier point" />
             </form>
             <div class="d-flex flex-row justify-content-between">
                 <a class="btn btn-danger m-2" href="?action=selectBooking&teamid=<?= $game->visitingTeamId ?>&setid=<?= $set->id ?>">
