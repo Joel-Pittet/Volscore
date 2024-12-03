@@ -15,7 +15,7 @@ session_start();
 <body>
 <header class="text-center">
     <a href="/" style="text-decoration:none;"><h1>VolScore</h1></a>
-    <form id="languageForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+    <form id="languageForm" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>" method="post">
         <label for="language">Langue:</label>
         <select onchange="document.getElementById('languageForm').submit()" name="language" id="language">
             <option value="fr"
@@ -23,11 +23,11 @@ session_start();
                 echo "selected";
             }?>
             >FR</option>
-            <option value="en"
-            <?php if ($_SESSION["languagePreference"] == "en"){
+            <option value="it"
+            <?php if ($_SESSION["languagePreference"] == "it"){
                 echo "selected";
             }?>
-            >EN</option>
+            >IT</option>
             <option value="de"
             <?php if ($_SESSION["languagePreference"] == "de"){
                 echo "selected";

@@ -10,8 +10,8 @@ session_start();
 if ($_POST["language"]){
 
     switch ($_POST["language"]){
-        case 'en':
-            $_SESSION["languagePreference"] = "en";
+        case 'it':
+            $_SESSION["languagePreference"] = "it";
             break;
         case 'fr':
             $_SESSION["languagePreference"] = "fr";
