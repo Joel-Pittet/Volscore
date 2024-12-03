@@ -26,6 +26,7 @@ switch ($_SESSION["languagePreference"]){
 </head>
 <body>
 <header class="text-center">
+    <div></div>
     <a href="/" style="text-decoration:none;"><h1>VolScore</h1></a>
     <form id="languageForm" action="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>" method="post">
         <label for="language"><?php echo $langue ?>:</label>
