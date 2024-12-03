@@ -85,3 +85,15 @@ td, th {
     width: 30%;
     text-align: center;
 }
+
+#removePoint{
+    display: flex;
+    justify-content: end;
+    padding-bottom: 5.5vh;
+}
+
+#btnRemovePoint{
+    color: white;
+    width: 25vh;
+    height: 4.5vh;
+}

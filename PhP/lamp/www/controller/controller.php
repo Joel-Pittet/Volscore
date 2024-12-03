@@ -136,13 +136,13 @@ function prepareSet($setid)
     require_once 'view/prepareSet.php';
 }
 
-function setPositions ($gameid, $setid, $teamid, $pos1, $pos2, $pos3, $pos4, $pos5, $pos6, $final) 
+function setPositions ($gameid, $setid, $teamid, $pos1, $pos2, $pos3, $pos4, $pos5, $pos6) 
 {
     $positions = VolscoreDB::getPositions($setid,$teamid); // check if we already have them
     if (count($positions) == 0) {
-        VolscoreDB::setPositions($setid, $teamid, $pos1, $pos2, $pos3, $pos4, $pos5, $pos6, $final);
+        VolscoreDB::setPositions($setid, $teamid, $pos1, $pos2, $pos3, $pos4, $pos5, $pos6, 1);
     } else {
-        VolscoreDB::updatePositions($setid, $teamid, $pos1, $pos2, $pos3, $pos4, $pos5, $pos6, $final);
+        VolscoreDB::updatePositions($setid, $teamid, $pos1, $pos2, $pos3, $pos4, $pos5, $pos6, 1);
     }
     header('Location: ?action=prepareSet&id='.$setid);
 }
@@ -215,6 +215,15 @@ function scorePoint($setid,$receiving)
         VolscoreDB::registerSetEndTimestamp($setid);
         require_once 'view/endOfSet.php';
     }
+}
+
+function removePoint($setid)
+{
+    $set = VolscoreDb::getSet($setid);
+    VolscoreDB::removeLastPoint($set);
+    
+    // Rediriger l'utilisateur vers la page de gestion du score
+    header('Location: ?action=keepScore&setid='.$setid);
 }
 
 function validateTeamForGame($teamid,$gameid)

@@ -553,6 +553,18 @@ class VolscoreDB implements IVolscoreDb {
         self::executeInsertQuery($query);
     }
 
+    public static function removeLastPoint($set)
+    {
+        // Trouver le dernier point inscrit pour le set
+        $lastPoint = self::getLastPoint($set);
+        
+        if ($lastPoint) {
+            // Si un point existe, on le supprime
+            $query = "DELETE FROM points WHERE id = " . $lastPoint->id;
+            self::executeUpdateQuery($query);
+        }
+    }
+
     public static function addTimeOut($teamid, $setid)
     {
         $lastPoint = self::getLastPoint(self::getSet($setid));
@@ -660,7 +672,7 @@ class VolscoreDB implements IVolscoreDb {
         self::executeUpdateQuery($query);
     }
 
-    public static function getPositions($setid, $teamid, &$isFinal = NULL) : array
+     public static function getPositions($setid, $teamid, &$isFinal = NULL) : array
     {
         try
         {
