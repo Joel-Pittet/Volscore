@@ -75,4 +75,4 @@ ob_start();
 $content = ob_get_clean();
 require_once 'gabarit.php';
 ?>
-<? //<input type=checkbox name="final"> Finales 
+<? 
