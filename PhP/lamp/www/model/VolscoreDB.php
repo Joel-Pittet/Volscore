@@ -660,7 +660,7 @@ class VolscoreDB implements IVolscoreDb {
         self::executeUpdateQuery($query);
     }
 
-    public static function getPositions($setid, $teamid, &$isFinal = NULL) : array
+     public static function getPositions($setid, $teamid, &$isFinal = NULL) : array
     {
         try
         {
