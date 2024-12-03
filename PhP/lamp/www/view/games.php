@@ -1,13 +1,24 @@
 <?php
-$title = 'Matches';
+switch ($_SESSION["languagePreference"]){
+    case 'de':
+        include("language/de/gamesDE.php");
+        break;
+    case 'it':
+        include("language/it/gamesIT.php");
+        break;
+    default:
+        include("language/fr/gamesFR.php");
+        break;   
+}
 
+$title = $pageTitle;
 ob_start();
 ?>
 
-<h1>Matchs</h1>
+<h1><?php echo $matchs ?></h1>
 <table class="table table-bordered">
     <thead>
-        <tr><th>Numéro</th><th>Recevante</th><th>Visiteur</th><th>Score</th><th>Action</th></tr>
+        <tr><th><?php echo $numero ?></th><th><?php echo $recevante ?></th><th><?php echo $visiteur ?></th><th><?php echo $score ?></th><th><?php echo $action ?></th></tr>
     </thead>
     <tbody>
     <?php
