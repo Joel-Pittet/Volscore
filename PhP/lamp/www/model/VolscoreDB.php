@@ -66,11 +66,12 @@ class VolscoreDB implements IVolscoreDb {
             $dbh = self::connexionDB();
             $query = 
                 "SELECT games.id as number, type, level,category,league,receiving_id as receivingTeamId,r.name as receivingTeamName,visiting_id as visitingTeamId,v.name as visitingTeamName,location as place,venue,moment ".
-                "FROM games INNER JOIN teams r ON games.receiving_id = r.id INNER JOIN teams v ON games.visiting_id = v.id";
+                "FROM games INNER JOIN teams r ON games.receiving_id = r.id INNER JOIN teams v ON games.visiting_id = v.id ORDER BY moment ASC";
             $statement = $dbh->prepare($query); // Prepare query
             $statement->setFetchMode(PDO::FETCH_ASSOC);
             $statement->execute();
             $res = [];
+            
             while ($rec = $statement->fetch()) {
                 $game = new Game($rec);
                 $game->scoreReceiving = 0;
@@ -96,7 +97,7 @@ class VolscoreDB implements IVolscoreDb {
     public static function getGamesByTime($period) : array
     {
         $query = "SELECT games.id as number, type, level,category,league,receiving_id as receivingTeamId,r.name as receivingTeamName,visiting_id as visitingTeamId,v.name as visitingTeamName,location as place,venue,moment " .
-                 "FROM games INNER JOIN teams r ON games.receiving_id = r.id INNER JOIN teams v ON games.visiting_id = v.id ";
+                 "FROM games INNER JOIN teams r ON games.receiving_id = r.id INNER JOIN teams v ON games.visiting_id = v.id ORDER BY moment ASC";
     
         switch ($period) {
             case TimeInThe::Past:
@@ -199,7 +200,7 @@ class VolscoreDB implements IVolscoreDb {
             $query =
                 "SELECT games.id as number, type, level,category,league,receiving_id as receivingTeamId,r.name as receivingTeamName,visiting_id as visitingTeamId,v.name as visitingTeamName,location as place,venue,moment,toss " .
                 "FROM games INNER JOIN teams r ON games.receiving_id = r.id INNER JOIN teams v ON games.visiting_id = v.id " .
-                "WHERE games.id=$number";
+                "WHERE games.id=$number ORDER BY moment DESC";
             $statement = $dbh->prepare($query); // Prepare query
             $statement->execute(); // Executer la query
             if (!($queryResult = $statement->fetch())) throw new Exception("Game not found"); 
