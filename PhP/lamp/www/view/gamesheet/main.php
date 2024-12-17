@@ -16,6 +16,7 @@ $title = $pageTitle . " " . $game->number;
 
 ob_start();
 ?>
+
 <div id="sheetframe">
     <div id="sheetheader"><?php require_once 'view/gamesheet/sheetheader.php' ?></div> 
     <div id="gamedescription"><?php require_once 'view/gamesheet/description.php' ?></div> 
