@@ -1,12 +1,25 @@
 <?php
-$title = 'Préparation du match '.$game->number;
+
+switch ($_SESSION["languagePreference"]){
+    case 'de':
+        include("language/de/prepareSetDE.php");
+        break;
+    case 'it':
+        include("language/it/prepareSetIT.php");
+        break;
+    default:
+        include("language/fr/prepareSetFR.php");
+        break;   
+}
+
+$title = $pageTitle . " " . $game->number;
 
 ob_start();
 ?>
 
-<h2>Préparation du set <?= $set->number ?> du match <?= $game->number ?>, <?= $game->receivingTeamName ?> - <?= $game->visitingTeamName ?></h2>
+<h2><?= $preparation . " " . $set->number . " " . $match . " " .$game->number ?>, <?= $game->receivingTeamName ?> - <?= $game->visitingTeamName ?></h2>
 <table>
-    <tr><th class="teamPrep">Positions <?= $game->receivingTeamName ?></th><th class="teamPrep">Positions <?= $game->visitingTeamName ?></th></tr>
+    <tr><th class="teamPrep"><?= $position . " " . $game->receivingTeamName ?></th><th class="teamPrep"><?=  $position . " " . $game->visitingTeamName ?></th></tr>
     <tr>
         <td class="teamPrep">
             <?php if ($receivingPositionsLocked) : ?>
@@ -32,7 +45,7 @@ ob_start();
                         </div>
                         <br>
                     <?php endfor; ?>
-                    <input type="submit" class="btn btn-primary btn-sm" value="Enregistrer"/>
+                    <input type="submit" class="btn btn-primary btn-sm" value="<?=$enregistrer?>"/>
                    
                 </form>
             <?php endif; ?>
@@ -61,7 +74,7 @@ ob_start();
                         </div>
                         <br>
                     <?php endfor; ?>
-                    <input type="submit" class="btn btn-primary btn-sm" value="Enregistrer"/>
+                    <input type="submit" class="btn btn-primary btn-sm" value="<?=$enregistrer?>"/>
                     
                 </form>
             <?php endif; ?>
@@ -69,7 +82,7 @@ ob_start();
     </tr>
 </table>
 <?php if ($receivingPositionsLocked && $visitingPositionsLocked) : ?>
-    <a href="?action=keepScore&setid=<?= $set->id ?>" class="btn btn-primary">Démarrer le set</a>
+    <a href="?action=keepScore&setid=<?= $set->id ?>" class="btn btn-primary"><?=$demarrer?></a>
 <?php endif; ?>
 <?php
 $content = ob_get_clean();
