@@ -33,6 +33,7 @@ foreach ($players as $player)
 <table class="table table-bordered">
     <thead>
         <tr><th><?php echo $numero?></th><th><?php echo $recevante?></th><th><?php echo $visiteur?></th><th><?php echo $score?></th><th><?php echo $action?></th></tr>
+        <tr><th>Moment</th><th>Type</th><th>Ligue</th><th>Recevante</th><th>Visiteur</th><th>Score</th><th>Action</th></tr>
     </thead>
     <tbody>
     <?php
@@ -40,7 +41,7 @@ foreach ($players as $player)
     {
         if  ($game->receivingTeamName == $team->name || $game->visitingTeamName == $team->name){
 
-            echo "<tr><td>".$game->number."</td><td>".$game->receivingTeamName."</td><td>".$game->visitingTeamName."</td><td>".(($game->scoreReceiving+$game->scoreVisiting) > 0 ? $game->scoreReceiving."-".$game->scoreVisiting : "")."</td><td>";
+            echo "<tr><td>".$game->moment."</td><td>".$game->type."</td><td>".$game->league."</td><td>".$game->receivingTeamName."</td><td>".$game->visitingTeamName."</td><td>".(($game->scoreReceiving+$game->scoreVisiting) > 0 ? $game->scoreReceiving."-".$game->scoreVisiting : "")."</td><td>";
         if ($game->isMarkable()) {
             echo "<a href='?action=mark&id=".$game->number."' class='btn btn-sm btn-primary m-1'>". $marquer ."</a>";
         }
