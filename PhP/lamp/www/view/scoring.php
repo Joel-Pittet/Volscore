@@ -2,13 +2,13 @@
 
 switch ($_SESSION["languagePreference"]){
     case 'de':
-        include("language/de/selectBookingDE.php");
+        include("language/de/scoringDE.php");
         break;
     case 'it':
-        include("language/it/selectBookingIT.php");
+        include("language/it/scoringIT.php");
         break;
     default:
-        include("language/fr/selectBookingFR.php");
+        include("language/fr/scoringFR.php");
         break;   
 }
 
@@ -35,16 +35,16 @@ ob_start();
             <form method="post" action="?action=scorePoint">
                 <input type="hidden" name="setid" value="<?= $set->id ?>" />
                 <input type="hidden" name="receiving" value="1" />
-                <input class="col-12 btn btn-success" type="submit" value="Point" />
+                <input class="col-12 btn btn-success" type="submit" value="<?=$point?>" />
             </form>
 
             <div class="d-flex flex-row justify-content-between">
                 <a class="btn btn-danger m-2" href="?action=selectBooking&teamid=<?= $game->receivingTeamId ?>&setid=<?= $set->id ?>">
-                    Sanctions
+                <?=$sanctions?>
                 </a>
                 <?php if (count($game->receivingTimeouts) < 2) : ?>
                     <a class="btn btn-secondary m-2" href="?action=timeout&teamid=<?= $game->receivingTeamId ?>&setid=<?= $set->id ?>" <?= count($game->receivingTimeouts) > 1 ? "disabled" : "" ?>>
-                        Temps Mort
+                    <?=$tempsMort?>
                     </a>
                 <?php endif; ?>
             </div>
@@ -59,7 +59,7 @@ ob_start();
             <form method="post" action="?action=removePoint">
                 <input type="hidden" name="setid" value="<?= $set->id ?>" />
                 <input type="hidden" name="receiving" value="1" />
-                <input id="btnRemovePoint" class="col-13 btn btn-warning" type="submit" value="Annuler le dernier point" />
+                <input id="btnRemovePoint" class="col-13 btn btn-warning" type="submit" value="<?= $annuler ?>" />
             </form>
 
         </div>
@@ -67,8 +67,8 @@ ob_start();
 
     <div class="d-flex flex-column order-<?= (($game->toss+$set->number) % 2 == 0) ? 2 : 1 ?>">
         <div class="teamname"><?= $game->visitingTeamName ?></div>
-        <div class="setscore"><?= $game->scoreVisiting ?></div>
-        <div class="setscore"><?= count($game->visitingTimeouts) ?> timeouts</div>
+        <div class="setscore"><?= $game->scoreVisiting . " " . $sets?></div>
+        <div class="setscore"><?= count($game->visitingTimeouts) . " " . $timeouts?></div>
         <div class="score"><?= $set->scoreVisiting ?></div>
         <div class="d-flex flex-column align-items-center">
             <?php foreach ($visitingPositions as $player) : ?>
@@ -81,15 +81,15 @@ ob_start();
             <form method="post" action="?action=scorePoint">
                 <input type="hidden" name="setid" value="<?= $set->id ?>" />
                 <input type="hidden" name="receiving" value="0" />
-                <input class="col-12 btn btn-success" type="submit" value="Point" />
+                <input class="col-12 btn btn-success" type="submit" value="<?=$point?>" />
             </form>
             <div class="d-flex flex-row justify-content-between">
                 <a class="btn btn-danger m-2" href="?action=selectBooking&teamid=<?= $game->visitingTeamId ?>&setid=<?= $set->id ?>">
-                    Sanctions
+                    <?=$sanctions?>
                 </a>
                 <?php if (count($game->visitingTimeouts) < 2) : ?>
                     <a class="btn btn-secondary m-2" href="?action=timeout&teamid=<?= $game->visitingTeamId ?>&setid=<?= $set->id ?>">
-                        Temps Mort
+                        <?=$tempsMort?>
                     </a>
                 <?php endif; ?>
             </div>
