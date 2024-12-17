@@ -1,15 +1,28 @@
 <?php
-$title = 'Score du match '.$game->number;
+
+switch ($_SESSION["languagePreference"]){
+    case 'de':
+        include("language/de/selectBookingDE.php");
+        break;
+    case 'it':
+        include("language/it/selectBookingIT.php");
+        break;
+    default:
+        include("language/fr/selectBookingFR.php");
+        break;   
+}
+
+$title = $pageTitle . " ".$game->number;
 
 ob_start();
 ?>
 
-<div class="row text-center"><h1>Set <?= $set->number ?></h1></div>
+<div class="row text-center"><h1><?= $setString . " " . $set->number ?></h1></div>
 <div class="d-flex flex-row justify-content-around">
     <div class="d-flex flex-column order-<?= (($game->toss+$set->number) % 2 == 0) ? 1 : 2 ?>">
         <div class="teamname"><?= $game->receivingTeamName ?></div>
-        <div class="setscore"><?= $game->scoreReceiving ?> sets</div>
-        <div class="setscore"><?= count($game->receivingTimeouts) ?> timeouts</div>
+        <div class="setscore"><?= $game->scoreReceiving . " " . $sets ?></div>
+        <div class="setscore"><?= count($game->receivingTimeouts) . " " . $timeouts?></div>
         <div class="score"><?= $set->scoreReceiving ?></div>
         <div class="d-flex flex-column align-items-center">
             <?php foreach ($receivingPositions as $player) : ?>
