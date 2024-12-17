@@ -6,7 +6,9 @@ require_once 'controller/controller.php';
 require_once 'model/VolscoreDB.php';
 require_once 'vendor/autoload.php';
 require_once 'helpers/helpers.php';
+
 session_start();
+
 if ($_POST["language"]){
 
     switch ($_POST["language"]){
