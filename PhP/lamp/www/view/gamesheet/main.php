@@ -1,5 +1,19 @@
 <?php
-$title = 'Match '.$game->number;
+
+switch ($_SESSION["languagePreference"]){
+    case 'de':
+        include("language/de/gamesheetDE.php");
+        break;
+    case 'it':
+        include("language/it/gamesheetIT.php");
+        break;
+    default:
+        include("language/fr/gamesheetFR.php");
+        break;   
+}
+
+$title = $pageTitle . " " . $game->number;
+
 ob_start();
 ?>
 <div id="sheetframe">

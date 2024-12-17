@@ -1,12 +1,27 @@
 <?php
-$title = 'Préparation du match '.$game->number;
+
+switch ($_SESSION["languagePreference"]){
+    case 'de':
+        include("language/de/prepareGameDE.php");
+        break;
+    case 'it':
+        include("language/it/prepareGameIT.php");
+        break;
+    default:
+        include("language/fr/prepareGameFR.php");
+        break;   
+}
+
+
+
+$title = $pageTitle . " " . $game->number;
 
 ob_start();
 ?>
 
 <div class="d-flex flex-column align-items-center m-5">
-    <h1>Préparation du match <?= $game->number ?></h1>
-    <h3>Vérification des présences, licenses et numéros de maillot</h3>
+    <h1><?= $preparation . " " . $game->number ?></h1>
+    <h3><?= $verification ?></h3>
     <table>
         <tr><th><?= $game->receivingTeamName ?></th><th><?= $game->visitingTeamName ?></th></tr>
         <tr>
@@ -17,7 +32,7 @@ ob_start();
                     <?php endforeach; ?>
                 </table>
                 <?php if (rosterIsValid($receivingRoster)) : ?>
-                    <div><span class="checkmark"></span>Présences validées</div>
+                    <div><span class="checkmark"></span><?=$presence?></div>
                 <?php else : ?>
                     <form method="post" action="?action=validate&game=<?= $game->number ?>&team=<?= $game->receivingTeamId ?>">
                         <input type="submit" class="btn btn-primary btn-sm" value="Valider">
@@ -31,10 +46,10 @@ ob_start();
                     <?php endforeach; ?>
                 </table>
                 <?php if (rosterIsValid($visitingRoster)) : ?>
-                    <div><span class="checkmark"></span>Présences validées</div>
+                    <div><span class="checkmark"></span><?=$presence?></div>
                 <?php else : ?>
                     <form method="post" action="?action=validate&game=<?= $game->number ?>&team=<?= $game->visitingTeamId ?>">
-                        <input type="submit" class="btn btn-primary btn-sm" value="Valider">
+                        <input type="submit" class="btn btn-primary btn-sm" value="<?= $valider ?>">
                     </form>
                 <?php endif; ?>
             </td>
@@ -42,7 +57,7 @@ ob_start();
     </table>
 </div>
 <div class="d-flex flex-column align-items-center m-5">
-    <h3>Tirage au sort gagné par</h3>
+    <h3><?= $tirage ?></h3>
     <form method="post" action="?action=registerToss">
         <input type="hidden" name="gameid" value=<?= $game->number ?> />
         <button type="submit" class="btn btn-success btn-sm m-3" name="cmdTossWinner" value="1"><?= $game->receivingTeamName ?></button>
