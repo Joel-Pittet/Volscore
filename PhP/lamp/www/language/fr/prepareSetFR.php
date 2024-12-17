@@ -4,4 +4,5 @@ $preparation = "Préparation du set";
 $match = "du match";
 $position = "Positions";
 $enregistrer = "Enregistrer";
+$demarrer = "Démarrer le set";
 

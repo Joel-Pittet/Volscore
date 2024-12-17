@@ -9,3 +9,6 @@ $marquer = "Markieren";
 $modifier = "Bearbeiten";
 $consulter = "Einsehen";
 $continuer = "Fortsetzen";
+$date = "Datum";
+$typeMatch = "Spieltyp";
+$ligue = "Liga";

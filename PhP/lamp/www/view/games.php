@@ -18,8 +18,7 @@ ob_start();
 <h1><?php echo $matchs ?></h1>
 <table class="table table-bordered">
     <thead>
-        <tr><th><?php echo $numero ?></th><th><?php echo $recevante ?></th><th><?php echo $visiteur ?></th><th><?php echo $score ?></th><th><?php echo $action ?></th></tr>
-        <tr><th>Moment</th><th>Type de Match</th><th>ligue</th><th>Recevante</th><th>Visiteur</th><th>Score</th><th>Action</th></tr>
+        <tr><th><?=$date?></th><th><?=$typeMatch?></th><th><?=$ligue?></th><th><?=$recevante?></th><th><?=$visiteur?></th><th><?=$score?></th><th><?=$action?></th></tr>
     </thead>
     <tbody>
     <?php
