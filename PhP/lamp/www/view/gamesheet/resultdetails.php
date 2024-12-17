@@ -3,10 +3,10 @@
         <div class="setresult">
             <div class="sectiontitle">
                 <span class="setnumber">
-                    Set <?= $set->number ?>, 
+                    <?=$setString . " " . $set->number ?>, 
                 </span>
                 <span class="setduration">
-                    <?= date("H\hi",strtotime($set->start)) ?>-<?= date("H\hi",strtotime($set->end)) ?>, <?= minutesBetween($set->start,$set->end) ?> minutes
+                    <?= date("H\hi",strtotime($set->start)) ?>-<?= date("H\hi",strtotime($set->end)) ?>, <?= minutesBetween($set->start,$set->end) . " " . $minutes?>
                 </span>
             </div>
             <div class="w-100 d-flex flex-row">
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div>
-                        Temps morts: <?= count($game->receivingTimeouts[$set->number]) ?>
+                        <?= $tempsMorts . ": " . count($game->receivingTimeouts[$set->number]) ?>
                     </div>
                     <?php if (count($game->receivingTimeouts[$set->number]) > 0) : ?>
                         <?php foreach ($game->receivingTimeouts[$set->number] as $timeout) : ?>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div>
-                        Temps morts: <?= count($game->visitingTimeouts[$set->number]) ?>
+                        <?= $tempsMorts . ": " . count($game->visitingTimeouts[$set->number]) ?>
                     </div>
                     <?php if (count($game->visitingTimeouts[$set->number]) > 0) : ?>
                         <?php foreach ($game->visitingTimeouts[$set->number] as $timeout) : ?>

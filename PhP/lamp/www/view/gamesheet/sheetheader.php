@@ -2,15 +2,15 @@
 <div id="competition">
     <div class="headerslot">
         <table>
-        <tr><td>Match de </td><td><?= $game->type ?></td></tr>
-        <tr><td>Niveau   </td><td><?= $game->level ?></td></tr>
-        <tr><td>Catégorie</td><td><?= $game->category ?></td></tr>
+        <tr><td><?=$matchDe?></td><td><?= $gameType[$game->type] ?></td></tr>
+        <tr><td><?=$niveau?></td><td><?= $game->level ?></td></tr>
+        <tr><td><?=$categorie?></td><td><?= $game->category ?></td></tr>
         </table>
     </div>
     <div class="headerslot">
         <table>
-        <tr><td>Numéro   </td><td><?= $game->number ?></td></tr>
-        <tr><td>Ligue    </td><td><?= $game->league ?></td></tr>
+        <tr><td><?=$numero?></td><td><?= $game->number ?></td></tr>
+        <tr><td><?=$ligue?></td><td><?= $game->league ?></td></tr>
         </table>
     </div>
 </div>

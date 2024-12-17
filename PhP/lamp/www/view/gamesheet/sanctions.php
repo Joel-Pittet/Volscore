@@ -7,12 +7,12 @@
                     <div>
                         <?php if (count($set) > 0) : ?>
                             <div>
-                                Set <?= $setnumber ?>
+                                <?= $setString . " " . $setnumber ?>
                             </div>
                             <?php foreach ($set as $sanction) : ?>
                                 <div>
                                     <img class="cards" src="images/sanction<?= $sanction['severity'] ?>.png" />
-                                    à <?= $sanction['scoreReceiving'] ?>-<?= $sanction['scoreVisiting'] ?>
+                                    <?= $à ." ". $sanction['scoreReceiving'] ?>-<?= $sanction['scoreVisiting'] ?>
                                 </div>
                             <?php endforeach; ?>
                         <?php endif; ?>
