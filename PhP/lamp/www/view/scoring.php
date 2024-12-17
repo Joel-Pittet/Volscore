@@ -77,7 +77,7 @@ ob_start();
         </div>
         <div class="row actions d-flex flex-column">
 
-            <!-- BTN Point -> Ajoute un point-->
+            <!-- BTN Point Ajoute un point-->
             <form method="post" action="?action=scorePoint">
                 <input type="hidden" name="setid" value="<?= $set->id ?>" />
                 <input type="hidden" name="receiving" value="0" />
