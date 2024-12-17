@@ -32,7 +32,7 @@ function showGames()
 function showGame($gameid)
 {
     if ($gameid == null) {
-        $message = "On essaye des trucs ???";
+        $message = "Try";
         require_once 'view/error.php';
     } else {
         $game = VolscoreDB::getGame($gameid);
@@ -52,7 +52,7 @@ function showGame($gameid)
 
 function markGame($gameid) {
     if ($gameid == null) {
-        $message = "On essaye des trucs ???";
+        $message = "Try";
         require_once 'view/error.php';
     } else {
         $game = VolscoreDB::getGame($gameid);
@@ -244,7 +244,7 @@ function teamDetail($teamid){
         echo "non";
     }
     if ($teamid == null) {
-        $message = "Team ID is missing.";
+        $message = "IdMissing";
         require_once 'view/error.php';
     } else {
         // Get the team details
@@ -252,7 +252,7 @@ function teamDetail($teamid){
         $games = VolscoreDB::getGames();
 
         if ($team == null) {
-            $message = "Team not found.";
+            $message = "TeamNotFound";
             require_once 'view/error.php';
         } else {
             // Get the list of players for the team
